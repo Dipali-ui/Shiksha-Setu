@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <title>Login - Shiksha Setu</title>
+    <link rel="icon" href="../images/setu_logo.jpeg">
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        :root {
+            --primary-color: #0d6efd;
+            --secondary-color: #198754;
+            --accent-color: #ffc107;
+            --student-color: #4e73df;
+            --teacher-color: #1cc88a;
+            --admin-color: #e74a3b;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .login-left {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #0b5ed7 100%);
+            color: white;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            width: 45%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 40px;
+        }
+
+        .login-right {
+            margin-left: 45%;
+            width: 55%;
+            padding: 40px;
+        }
+
+        .logo-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .logo-section img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .welcome-text h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .welcome-text p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .login-options {
+            margin-bottom: 30px;
+        }
+
+        .login-tabs {
+            display: flex;
+            background: white;
+            border-radius: 15px;
+            padding: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .login-tab {
+            flex: 1;
+            text-align: center;
+            padding: 15px 10px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            color: #6c757d;
+        }
+
+        .login-tab.active {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
+        }
+
+        .login-tab.student.active {
+            background: var(--student-color);
+            box-shadow: 0 5px 15px rgba(78, 115, 223, 0.3);
+        }
+
+        .login-tab.teacher.active {
+            background: var(--teacher-color);
+            box-shadow: 0 5px 15px rgba(28, 200, 138, 0.3);
+        }
+
+        .login-tab.admin.active {
+            background: var(--admin-color);
+            box-shadow: 0 5px 15px rgba(231, 74, 59, 0.3);
+        }
+
+        .login-form-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            margin-bottom: 30px;
+        }
+
+        .form-title {
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: #343a40;
+            text-align: center;
+            font-size: 1.8rem;
+        }
+
+        .user-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .student-icon {
+            background: var(--student-color);
+        }
+
+        .teacher-icon {
+            background: var(--teacher-color);
+        }
+
+        .admin-icon {
+            background: var(--admin-color);
+        }
+
+        .form-control {
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+        }
+
+        .student-form .form-control:focus {
+            border-color: var(--student-color);
+            box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.15);
+        }
+
+        .teacher-form .form-control:focus {
+            border-color: var(--teacher-color);
+            box-shadow: 0 0 0 0.2rem rgba(28, 200, 138, 0.15);
+        }
+
+        .admin-form .form-control:focus {
+            border-color: var(--admin-color);
+            box-shadow: 0 0 0 0.2rem rgba(231, 74, 59, 0.15);
+        }
+
+        .form-label {
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #495057;
+            font-size: 0.95rem;
+        }
+
+        .btn-login {
+            border: none;
+            border-radius: 12px;
+            padding: 15px 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        .btn-student {
+            background: var(--student-color);
+        }
+
+        .btn-student:hover {
+            background: #3a5fcf;
+            transform: translateY(-2px);
+            box-shadow: 0 7px 20px rgba(78, 115, 223, 0.4);
+        }
+
+        .btn-teacher {
+            background: var(--teacher-color);
+        }
+
+        .btn-teacher:hover {
+            background: #17a673;
+            transform: translateY(-2px);
+            box-shadow: 0 7px 20px rgba(28, 200, 138, 0.4);
+        }
+
+        .btn-admin {
+            background: var(--admin-color);
+        }
+
+        .btn-admin:hover {
+            background: #d52a1a;
+            transform: translateY(-2px);
+            box-shadow: 0 7px 20px rgba(231, 74, 59, 0.4);
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .form-check-input:checked {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .student-form .form-check-input:checked {
+            background-color: var(--student-color);
+            border-color: var(--student-color);
+        }
+
+        .teacher-form .form-check-input:checked {
+            background-color: var(--teacher-color);
+            border-color: var(--teacher-color);
+        }
+
+        .admin-form .form-check-input:checked {
+            background-color: var(--admin-color);
+            border-color: var(--admin-color);
+        }
+
+        .forgot-password {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .student-form .forgot-password {
+            color: var(--student-color);
+        }
+
+        .teacher-form .forgot-password {
+            color: var(--teacher-color);
+        }
+
+        .admin-form .forgot-password {
+            color: var(--admin-color);
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .login-footer {
+            text-align: center;
+            color: #6c757d;
+            margin-top: 30px;
+        }
+
+        .login-footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .demo-accounts {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        .demo-title {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #343a40;
+            text-align: center;
+        }
+
+        .demo-account {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .demo-account:hover {
+            background: #f8f9fa;
+            transform: translateX(5px);
+        }
+
+        .demo-account.student {
+            border-left: 4px solid var(--student-color);
+        }
+
+        .demo-account.teacher {
+            border-left: 4px solid var(--teacher-color);
+        }
+
+        .demo-account.admin {
+            border-left: 4px solid var(--admin-color);
+        }
+
+        .demo-info h6 {
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .demo-info p {
+            margin-bottom: 0;
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+
+        .demo-copy {
+            background: transparent;
+            border: none;
+            color: var(--primary-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .demo-copy:hover {
+            background: #f8f9fa;
+        }
+
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0% { transform: translate(0, 0px); }
+            50% { transform: translate(0, 15px); }
+            100% { transform: translate(0, -0px); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .login-form {
+            display: none;
+        }
+
+        .login-form.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .back-home {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .back-home:hover {
+            color: var(--accent-color);
+            transform: translateX(-5px);
+        }
+
+        @media (max-width: 992px) {
+            .login-left {
+                position: relative;
+                width: 100%;
+                height: auto;
+                padding: 60px 20px;
+            }
+            
+            .login-right {
+                margin-left: 0;
+                width: 100%;
+                padding: 40px 20px;
+            }
+            
+            .login-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid login-container">
+        <!-- Left Side - Welcome Section -->
+        <div class="login-left" data-aos="fade-right">
+            <a href="index.html" class="back-home">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+            <div class="logo-section">
+                <img src="../images/setu_logo.jpeg" alt="Shiksha Setu Logo" class="pulse">
+                <div class="welcome-text">
+                    <h1>Welcome Back!</h1>
+                    <p>Access your Shiksha Setu account and continue your educational journey with us.</p>
+                </div>
+            </div>
+            <div class="features-list mt-5">
+                <div class="feature-item d-flex align-items-center mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-graduation-cap fa-2x me-4"></i>
+                    <div>
+                        <h5>Quality Education</h5>
+                        <p class="mb-0">Access to premium learning resources</p>
+                    </div>
+                </div>
+                <div class="feature-item d-flex align-items-center mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-users fa-2x me-4"></i>
+                    <div>
+                        <h5>Community Learning</h5>
+                        <p class="mb-0">Connect with peers and educators</p>
+                    </div>
+                </div>
+                <div class="feature-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-chart-line fa-2x me-4"></i>
+                    <div>
+                        <h5>Track Progress</h5>
+                        <p class="mb-0">Monitor your learning journey</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side - Login Forms -->
+        <div class="login-right" data-aos="fade-left">
+            <div class="login-options">
+                <h2 class="text-center mb-4" style="color: #343a40;">Login to Your Account</h2>
+                
+                <!-- Login Tabs -->
+                <div class="login-tabs">
+                    <div class="login-tab student active" data-user-type="student">
+                        <i class="fas fa-user-graduate me-2"></i> Student
+                    </div>
+                    <div class="login-tab teacher" data-user-type="teacher">
+                        <i class="fas fa-chalkboard-teacher me-2"></i> Teacher
+                    </div>
+                    <div class="login-tab admin" data-user-type="admin">
+                        <i class="fas fa-user-shield me-2"></i> Admin
+                    </div>
+                </div>
+
+                <!-- Student Login Form -->
+                <div class="login-form student-form active" id="studentForm">
+                    <div class="login-form-container">
+                        <div class="user-icon student-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <h3 class="form-title">Student Login</h3>
+                        <form id="studentLoginForm">
+                            <div class="mb-3">
+                                <label for="studentId" class="form-label">Student ID</label>
+                                <input type="text" class="form-control" id="studentId" placeholder="Enter your student ID" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="studentPassword" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="studentPassword" placeholder="Enter your password" required>
+                            </div>
+                            <div class="form-options">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rememberStudent">
+                                    <label class="form-check-label" for="rememberStudent">Remember me</label>
+                                </div>
+                                <a href="#" class="forgot-password">Forgot Password?</a>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-login btn-student">Login as Student</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Teacher Login Form -->
+                <div class="login-form teacher-form" id="teacherForm">
+                    <div class="login-form-container">
+                        <div class="user-icon teacher-icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <h3 class="form-title">Teacher Login</h3>
+                        <form id="teacherLoginForm">
+                            <div class="mb-3">
+                                <label for="teacherId" class="form-label">Teacher ID</label>
+                                <input type="text" class="form-control" id="teacherId" placeholder="Enter your teacher ID" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="teacherPassword" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="teacherPassword" placeholder="Enter your password" required>
+                            </div>
+                            <div class="form-options">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rememberTeacher">
+                                    <label class="form-check-label" for="rememberTeacher">Remember me</label>
+                                </div>
+                                <a href="#" class="forgot-password">Forgot Password?</a>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-login btn-teacher">Login as Teacher</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Admin Login Form -->
+                <div class="login-form admin-form" id="adminForm">
+                    <div class="login-form-container">
+                        <div class="user-icon admin-icon">
+                            <i class="fas fa-user-shield"></i>
+                        </div>
+                        <h3 class="form-title">Admin Login</h3>
+                        <form id="adminLoginForm">
+                            <div class="mb-3">
+                                <label for="adminId" class="form-label">Admin ID</label>
+                                <input type="text" class="form-control" id="adminId" placeholder="Enter your admin ID" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="adminPassword" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="adminPassword" placeholder="Enter your password" required>
+                            </div>
+                            <div class="form-options">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rememberAdmin">
+                                    <label class="form-check-label" for="rememberAdmin">Remember me</label>
+                                </div>
+                                <a href="#" class="forgot-password">Forgot Password?</a>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-login btn-admin">Login as Admin</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Demo Accounts -->
+                
+
+                <div class="login-footer">
+                    <p>Don't have an account? <a href="register.html">Sign up here</a></p>
+                    <p>By logging in, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></p>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS (Animate On Scroll)
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50
+        });
+
+        // Tab switching functionality
+        const loginTabs = document.querySelectorAll('.login-tab');
+        const loginForms = document.querySelectorAll('.login-form');
+
+        loginTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and forms
+                loginTabs.forEach(t => t.classList.remove('active'));
+                loginForms.forEach(f => f.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Show corresponding form
+                const userType = tab.getAttribute('data-user-type');
+                document.getElementById(`${userType}Form`).classList.add('active');
+            });
+        });
+
+        // Form submission
+        const studentForm = document.getElementById('studentLoginForm');
+        const teacherForm = document.getElementById('teacherLoginForm');
+        const adminForm = document.getElementById('adminLoginForm');
+
+        studentForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const studentId = document.getElementById('studentId').value;
+            const password = document.getElementById('studentPassword').value;
+            
+            // In a real application, this would be an API call
+            if (studentId && password) {
+                alert(`Student login successful! Redirecting to student dashboard...`);
+                // window.location.href = 'student-dashboard.html';
+            }
+        });
+
+        teacherForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const teacherId = document.getElementById('teacherId').value;
+            const password = document.getElementById('teacherPassword').value;
+            
+            if (teacherId && password) {
+                alert(`Teacher login successful! Redirecting to teacher dashboard...`);
+                // window.location.href = 'teacher-dashboard.html';
+            }
+        });
+
+        adminForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const adminId = document.getElementById('adminId').value;
+            const password = document.getElementById('adminPassword').value;
+            
+            if (adminId && password) {
+                alert(`Admin login successful! Redirecting to admin dashboard...`);
+                // window.location.href = 'admin-dashboard.html';
+            }
+        });
+
+        // Demo account copy functionality
+        const demoCopyButtons = document.querySelectorAll('.demo-copy');
+        
+        demoCopyButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const id = button.getAttribute('data-id');
+                const pass = button.getAttribute('data-pass');
+                
+                // Determine which form is active
+                const activeForm = document.querySelector('.login-form.active');
+                const formType = activeForm.classList[1]; // student-form, teacher-form, or admin-form
+                
+                // Fill the form with demo credentials
+                if (formType === 'student-form') {
+                    document.getElementById('studentId').value = id;
+                    document.getElementById('studentPassword').value = pass;
+                } else if (formType === 'teacher-form') {
+                    document.getElementById('teacherId').value = id;
+                    document.getElementById('teacherPassword').value = pass;
+                } else if (formType === 'admin-form') {
+                    document.getElementById('adminId').value = id;
+                    document.getElementById('adminPassword').value = pass;
+                }
+                
+                // Show feedback
+                const originalText = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                button.style.color = 'var(--secondary-color)';
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.style.color = '';
+                }, 2000);
+            });
+        });
+
+        // Auto-fill demo accounts when switching tabs
+        loginTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Small delay to ensure form is visible
+                setTimeout(() => {
+                    const userType = tab.getAttribute('data-user-type');
+                    const demoButton = document.querySelector(`.demo-account.${userType} .demo-copy`);
+                    if (demoButton) {
+                        demoButton.click();
+                    }
+                }, 100);
+            });
+        });
+
+        // Password visibility toggle (optional enhancement)
+        // This could be added with eye icons next to password fields
+    </script>
+</body>
+
+</html>

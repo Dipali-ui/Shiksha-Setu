@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <title>Digital Learning Platform for Rural School Students in Nabha</title>
+    <link rel="icon" href="../images/setu_logo.jpeg">
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        :root {
+            --primary-color: #0d6efd;
+            --secondary-color: #198754;
+            --accent-color: #ffc107;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .logo-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 15px 0;
+        }
+
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: var(--accent-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-item:hover::after {
+            width: 80%;
+        }
+
+        .carousel-item {
+            height: 500px;
+            overflow: hidden;
+        }
+
+        .carousel-item img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+
+        .carousel-caption {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            bottom: 20%;
+        }
+
+        .card {
+            transition: all 0.3s ease;
+            border: none;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-img-top {
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover .card-img-top {
+            transform: scale(1.05);
+        }
+
+        .update-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .update-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(13, 110, 253, 0.1) 0%, rgba(25, 135, 84, 0.1) 100%);
+            z-index: -1;
+        }
+
+        .why-nabha-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #0b5ed7 100%);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(13, 110, 253, 0.3);
+        }
+
+        .about-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .about-image {
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            animation: imageTransition 15s infinite;
+        }
+
+        @keyframes imageTransition {
+            0% {
+                background-image: url('../images/ChatGPT\ Image\ Sep\ 19\,\ 2025\,\ 09_47_06\ PM.png');
+            }
+            33% {
+                background-image: url('../images/craiyon_214049_A_photorealistic_digital_illustration__a_side_by_side_split_frame_comparison_showcasing_the_transfor.png');
+            }
+            66% {
+                background-image: url('../images/craiyon_214059_A_photorealistic_digital_illustration__side_by_side_comparison__split_frame__of_education_transforma.png');
+            }
+            100% {
+                background-image: url('../images/ChatGPT\ Image\ Sep\ 19\,\ 2025\,\ 09_47_06\ PM.png');
+            }
+        }
+
+        .feature-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .feature-list li:hover {
+            background-color: rgba(13, 110, 253, 0.05);
+            padding-left: 10px;
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #0b5ed7 100%);
+        }
+
+        .footer-links a {
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color) !important;
+            padding-left: 5px;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+        }
+
+        .counter-section {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #157347 100%);
+            color: white;
+            padding: 50px 0;
+            border-radius: 15px;
+        }
+
+        .counter-item {
+            text-align: center;
+        }
+
+        .counter {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0% { transform: translate(0, 0px); }
+            50% { transform: translate(0, 15px); }
+            100% { transform: translate(0, -0px); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .typing-text {
+            overflow: hidden;
+            border-right: .15em solid var(--primary-color);
+            white-space: nowrap;
+            margin: 0 auto;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--primary-color); }
+        }
+
+        /* Enhanced About Section Styles */
+        .enhanced-about {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .about-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            z-index: 10;
+            animation: badgePulse 2s infinite;
+        }
+
+        @keyframes badgePulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .about-tabs {
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .about-tabs .nav-link {
+            border: none;
+            color: #6c757d;
+            font-weight: 500;
+            padding: 12px 20px;
+            transition: all 0.3s ease;
+        }
+
+        .about-tabs .nav-link.active {
+            color: var(--primary-color);
+            background: transparent;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .about-tabs .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        .tab-content {
+            padding: 30px 0;
+        }
+
+        .about-feature {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .about-feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            background: white;
+        }
+
+        .about-feature i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        /* Enhanced Updates Section Styles */
+        .enhanced-updates {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .update-card {
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            height: 100%;
+            position: relative;
+        }
+
+        .update-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .update-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--secondary-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            z-index: 10;
+        }
+
+        .update-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .update-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .update-card:hover .update-image img {
+            transform: scale(1.1);
+        }
+
+        .update-content {
+            padding: 20px;
+        }
+
+        .update-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-bottom: 10px;
+        }
+
+        .update-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #343a40;
+        }
+
+        .update-excerpt {
+            color: #6c757d;
+            margin-bottom: 15px;
+        }
+
+        .update-read-more {
+            color: var(--primary-color);
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .update-read-more:hover {
+            color: var(--secondary-color);
+            transform: translateX(5px);
+        }
+
+        .update-read-more i {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .update-read-more:hover i {
+            transform: translateX(3px);
+        }
+
+        /* Enhanced Objectives Section Styles */
+        .enhanced-objectives {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .objective-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .objective-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--primary-color);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .objective-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .objective-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .objective-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(13, 110, 253, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            transition: all 0.3s ease;
+        }
+
+        .objective-card:hover .objective-icon {
+            background: var(--primary-color);
+            transform: scale(1.1);
+        }
+
+        .objective-icon i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .objective-card:hover .objective-icon i {
+            color: white;
+        }
+
+        .objective-title {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #343a40;
+        }
+
+        .objective-description {
+            color: #6c757d;
+        }
+
+        /* Enhanced Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #0b5ed7 100%);
+            color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .stats-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/45-degree-fabric-light.png');
+            opacity: 0.1;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 30px 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Enhanced Testimonials */
+        .testimonial-section {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .testimonial-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 15px;
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 4rem;
+            color: rgba(13, 110, 253, 0.1);
+            font-family: Georgia, serif;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testimonial-info h5 {
+            margin-bottom: 0;
+            font-weight: bold;
+        }
+
+        .testimonial-info p {
+            margin-bottom: 0;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Back to top button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <div class="container-fluid">
+        <!-- Welcome Banner -->
+        <div class="row">
+            <div class="col-sm-12 bg-primary text-center py-3 text-light">
+                <b class="typing-text">Welcome to the Shiksha Setu - Bridging Education Gaps in Rural Nabha</b>
+            </div>
+        </div>
+
+        <!-- Logo Section -->
+        <div class="row logo-section">
+            <div class="col-sm-4 d-flex justify-content-center align-items-center">
+                <img src="../images/setu_logo.jpeg" alt="Shiksha Setu Logo" height="160" width="160"
+                    class="rounded-circle shadow pulse" data-aos="zoom-in">
+            </div>
+            <div class="col-sm-5 d-flex align-items-center justify-content-center">
+                <h4 class="text-center" data-aos="fade-up"><b> Digital Learning Platform for Rural School <br>
+                        Students in Nabha (Punjab)</b></h4>
+            </div>
+            <div class="col-sm-3 d-flex align-items-center justify-content-center">
+                <div data-aos="fade-left">
+                    <i class="fa-solid fa-phone-volume fa-bounce fa-xl me-2"></i> <b> Call Us : +91 0000 000 0000</b><br>
+                    <i class="fa-solid fa-envelope fa-shake fa-xl me-2 mt-2"></i> <b> Mail Us : shikshasetu@gmail.com</b>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navbar -->
+        <div class="row sticky-top">
+            <div class="col-sm-12 p-0">
+                <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(2, 100, 213)">
+                    <div class="container-fluid">
+                        <a class="navbar-brand d-lg-none" href="#">Shiksha Setu</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto ms-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                        aria-expanded="false">
+                                        This Platform
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="about.html">About Us</a></li>
+                                        <li><a class="dropdown-item" href="#mission">Our Mission</a></li>
+                                        <li><a class="dropdown-item" href="#team">Our Team</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                        aria-expanded="false">
+                                        Education
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Curriculum</a></li>
+                                        <li><a class="dropdown-item" href="#">Learning Resources</a></li>
+                                        <li><a class="dropdown-item" href="#">Teaching Methods</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="contact.html">
+                                        Contact
+                                    </a>
+                                </li>
+                              
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                        aria-expanded="false">
+                                        Useful Links
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="https://www.unesco.org/" target="_blank">UNESCO Digital Learning Reports</a></li>
+                                        <li><a class="dropdown-item" href="https://ncert.nic.in/" target="_blank">NCERT Curriculum Guidelines</a></li>
+                                        <li><a class="dropdown-item" href="https://www.education.gov.in/nep" target="_blank">NEP 2022 Education Policy</a></li>
+                                    </ul>
+                                </li>
+                               
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="login.html">
+                                        Login
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Slider -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
+                            class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="../images/craiyon_214049_A_photorealistic_digital_illustration__a_side_by_side_split_frame_comparison_showcasing_the_transfor.png"
+                                class="d-block w-100" alt="Education Transformation">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h2><b>Welcome to Shiksha Setu</b></h2>
+                                <h5>Digital Learning Platform for Rural School Students in Nabha</h5>
+                                <button class="btn btn-warning mt-3">Explore Now</button>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../images/craiyon_214059_A_photorealistic_digital_illustration__side_by_side_comparison__split_frame__of_education_transforma.png"
+                                class="d-block w-100" alt="Education Comparison">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h2><b>Bridging the Education Gap</b></h2>
+                                <h5>Transforming rural education through digital solutions</h5>
+                                <button class="btn btn-warning mt-3">Learn More</button>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../images/ChatGPT Image Sep 19, 2025, 09_47_06 PM.png" class="d-block w-100" alt="Digital Learning">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h2><b>Empowering Future Generations</b></h2>
+                                <h5>Quality education for every child in Nabha</h5>
+                                <button class="btn btn-warning mt-3">Get Started</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Counter Section -->
+        <div class="row mt-5">
+            <div class="col-sm-10 mx-auto">
+                <div class="counter-section rounded shadow" data-aos="fade-up">
+                    <div class="row text-center">
+                        <div class="col-sm-3 counter-item" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="counter" data-count="1500">0</div>
+                            <p>Students Enrolled</p>
+                        </div>
+                        <div class="col-sm-3 counter-item" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="counter" data-count="50">0</div>
+                            <p>Schools Covered</p>
+                        </div>
+                        <div class="col-sm-3 counter-item" data-aos="zoom-in" data-aos-delay="300">
+                            <div class="counter" data-count="200">0</div>
+                            <p>Learning Resources</p>
+                        </div>
+                        <div class="col-sm-3 counter-item" data-aos="zoom-in" data-aos-delay="400">
+                            <div class="counter" data-count="15">0</div>
+                            <p>Villages Reached</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enhanced Updates Section -->
+        <div class="row mt-5 update-section">
+            <div class="container-fluid">
+                <div class="row d-flex align-items-center mb-4">
+                    <div class="col-sm-3">
+                        <h2 class="mb-4 fw-bold bg-primary py-3 px-3 text-light rounded" data-aos="fade-right">
+                            Latest Updates 
+                            <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExczkwbjd0b24wcXZlaWN5NnhnOTV0YnMxY2M0eGxlaXN3OHJ6cWp2aiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/XdOpq8KtWgfoGEwJjK/giphy.gif"
+                                height="30" width="60" alt="Updates Icon">
+                        </h2>
+                    </div>
+                    <div class="col-sm-9 bg-success py-2 text-light rounded">
+                        <marquee behavior="" direction="" scrollamount="10" onmouseover="this.stop()"
+                            onmouseout="this.start()">
+                            <b>New courses added for Class 6-8 Mathematics • Video lectures now available for Science subjects • 
+                            Teacher training workshop scheduled for next month • Digital library access expanded to 10 more villages</b>
+                        </marquee>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="enhanced-updates p-4">
+                        <div class="row g-4">
+                            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                                <div class="update-card shadow-sm">
+                                    <div class="update-badge">New</div>
+                                    <div class="update-image">
+                                        <img src="../images/card1.webp" alt="New Learning Materials">
+                                    </div>
+                                    <div class="update-content">
+                                        <div class="update-meta">
+                                            <span><i class="far fa-calendar me-1"></i> 15 Nov 2023</span>
+                                            <span><i class="far fa-clock me-1"></i> 3 min read</span>
+                                        </div>
+                                        <h5 class="update-title">New Interactive Learning Materials Launched</h5>
+                                        <p class="update-excerpt">We've added new interactive learning materials for Mathematics and Science for classes 6-10 with engaging animations and quizzes.</p>
+                                        <a href="#" class="update-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                                <div class="update-card shadow-sm">
+                                    <div class="update-badge">Event</div>
+                                    <div class="update-image">
+                                        <img src="../images/card2.webp" alt="Teacher Training">
+                                    </div>
+                                    <div class="update-content">
+                                        <div class="update-meta">
+                                            <span><i class="far fa-calendar me-1"></i> 10 Nov 2023</span>
+                                            <span><i class="far fa-clock me-1"></i> 2 min read</span>
+                                        </div>
+                                        <h5 class="update-title">Digital Teaching Skills Workshop</h5>
+                                        <p class="update-excerpt">Digital teaching skills workshop conducted for 50 teachers from rural schools in Nabha to enhance their digital pedagogy.</p>
+                                        <a href="#" class="update-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                                <div class="update-card shadow-sm">
+                                    <div class="update-badge">Achievement</div>
+                                    <div class="update-image">
+                                        <img src="../images/card3.jpg" alt="Community Engagement">
+                                    </div>
+                                    <div class="update-content">
+                                        <div class="update-meta">
+                                            <span><i class="far fa-calendar me-1"></i> 5 Nov 2023</span>
+                                            <span><i class="far fa-clock me-1"></i> 4 min read</span>
+                                        </div>
+                                        <h5 class="update-title">Community Engagement Program Success</h5>
+                                        <p class="update-excerpt">Parent-teacher meetings organized across 10 villages to discuss digital learning progress and address challenges.</p>
+                                        <a href="#" class="update-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row mt-4">
+                            <div class="col-12 text-center">
+                                <button class="btn btn-primary px-4" id="loadMoreUpdates">Load More Updates</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enhanced About Section -->
+        <div class="row mt-5" id="about">
+            <div class="col-sm-11 mx-auto">
+                <div class="enhanced-about p-4">
+                    <div class="about-badge">About Shiksha Setu</div>
+                    <h2 class="text-center mb-4 text-primary" data-aos="fade-up">Transforming Rural Education in Nabha</h2>
+                    
+                    <ul class="nav about-tabs justify-content-center" id="aboutTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="mission-tab" data-bs-toggle="tab" data-bs-target="#mission" type="button" role="tab" aria-controls="mission" aria-selected="true">Our Mission</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="vision-tab" data-bs-toggle="tab" data-bs-target="#vision" type="button" role="tab" aria-controls="vision" aria-selected="false">Our Vision</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="approach-tab" data-bs-toggle="tab" data-bs-target="#approach" type="button" role="tab" aria-controls="approach" aria-selected="false">Our Approach</button>
+                        </li>
+                    </ul>
+                    
+                    <div class="tab-content" id="aboutTabContent">
+                        <div class="tab-pane fade show active" id="mission" role="tabpanel" aria-labelledby="mission-tab">
+                            <div class="row align-items-center">
+                                <div class="col-md-6" data-aos="fade-right">
+                                    <div class="about-image"></div>
+                                </div>
+                                <div class="col-md-6" data-aos="fade-left">
+                                    <h3 class="mb-4">Our Mission</h3>
+                                    <p class="mb-4" style="text-align: justify;">
+                                        Shiksha Setu is a digital learning platform designed to empower rural school students of Nabha
+                                        by providing them with quality and accessible education. The project aims to bridge the gap
+                                        between urban and rural education systems by introducing modern, interactive, and
+                                        technology-driven learning solutions.
+                                    </p>
+                                    <p style="text-align: justify;">
+                                        In rural areas like Nabha, students often face challenges due to the lack of proper digital
+                                        resources, smart educational tools, and modern teaching methodologies. Shiksha Setu provides an
+                                        innovative solution where students can access study materials, interactive lessons, and
+                                        e-learning resources through a user-friendly platform.
+                                    </p>
+                                    <div class="mt-4">
+                                        <a href="#" class="btn btn-primary me-2">Learn More</a>
+                                        <a href="#" class="btn btn-outline-primary">Watch Video</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="vision" role="tabpanel" aria-labelledby="vision-tab">
+                            <div class="row align-items-center">
+                                <div class="col-md-6" data-aos="fade-right">
+                                    <div class="about-image"></div>
+                                </div>
+                                <div class="col-md-6" data-aos="fade-left">
+                                    <h3 class="mb-4">Our Vision</h3>
+                                    <p class="mb-4" style="text-align: justify;">
+                                        We envision a future where every child in rural India has access to quality education through digital means, 
+                                        breaking the barriers of geography and socioeconomic status. Our vision is to create an ecosystem where 
+                                        technology empowers teachers and students alike.
+                                    </p>
+                                    <p style="text-align: justify;">
+                                        By 2025, we aim to expand our platform to cover 100+ villages in Punjab, reaching over 10,000 students 
+                                        and training 500+ teachers in digital pedagogy. We believe that education is the most powerful tool 
+                                        for social transformation.
+                                    </p>
+                                    <div class="mt-4">
+                                        <a href="#" class="btn btn-primary me-2">Our Goals</a>
+                                        <a href="#" class="btn btn-outline-primary">Impact Report</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="approach" role="tabpanel" aria-labelledby="approach-tab">
+                            <div class="row align-items-center">
+                                <div class="col-md-6" data-aos="fade-right">
+                                    <div class="about-image"></div>
+                                </div>
+                                <div class="col-md-6" data-aos="fade-left">
+                                    <h3 class="mb-4">Our Approach</h3>
+                                    <p class="mb-4" style="text-align: justify;">
+                                        Our approach is centered on collaboration, innovation, and sustainability. We work closely with 
+                                        local communities, government schools, and education experts to develop solutions that are 
+                                        contextually relevant and scalable.
+                                    </p>
+                                    <p style="text-align: justify;">
+                                        We combine technology with traditional teaching methods to create a blended learning environment 
+                                        that caters to diverse learning needs. Our content is available in multiple languages and formats 
+                                        to ensure maximum accessibility.
+                                    </p>
+                                    <div class="mt-4">
+                                        <a href="#" class="btn btn-primary me-2">Our Methodology</a>
+                                        <a href="#" class="btn btn-outline-primary">Case Studies</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-5">
+                        <div class="col-12">
+                            <h3 class="text-center mb-4">Why Shiksha Setu Stands Out</h3>
+                            <div class="row g-4">
+                                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                                    <div class="about-feature">
+                                        <i class="fas fa-graduation-cap"></i>
+                                        <h5>Quality Education</h5>
+                                        <p>Curriculum aligned with NCERT and state board standards</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                                    <div class="about-feature">
+                                        <i class="fas fa-mobile-alt"></i>
+                                        <h5>Accessible Anywhere</h5>
+                                        <p>Works on low-end devices with limited internet connectivity</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                                    <div class="about-feature">
+                                        <i class="fas fa-language"></i>
+                                        <h5>Multilingual Content</h5>
+                                        <p>Available in Punjabi, Hindi, and English languages</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enhanced Objectives Section -->
+        <div class="row mt-5">
+            <div class="col-sm-11 mx-auto">
+                <div class="enhanced-objectives p-5">
+                    <h2 class="text-center mb-5 text-primary" data-aos="fade-up">Our Key Objectives</h2>
+                    <div class="row g-4">
+                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                            <div class="objective-card">
+                                <div class="objective-icon">
+                                    <i class="fas fa-bridge"></i>
+                                </div>
+                                <h4 class="objective-title">Bridge the Digital Divide</h4>
+                                <p class="objective-description">Reduce the educational gap between urban and rural students by providing equal access to digital learning resources and tools.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                            <div class="objective-card">
+                                <div class="objective-icon">
+                                    <i class="fas fa-universal-access"></i>
+                                </div>
+                                <h4 class="objective-title">Ensure Accessibility</h4>
+                                <p class="objective-description">Offer affordable and accessible learning resources to every student, regardless of their socioeconomic background.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                            <div class="objective-card">
+                                <div class="objective-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <h4 class="objective-title">Enhance Engagement</h4>
+                                <p class="objective-description">Improve student engagement through interactive content, gamified learning, and personalized educational pathways.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+                            <div class="objective-card">
+                                <div class="objective-icon">
+                                    <i class="fas fa-expand-arrows-alt"></i>
+                                </div>
+                                <h4 class="objective-title">Create Scalable Models</h4>
+                                <p class="objective-description">Develop replicable educational models that can be expanded to other rural regions across Punjab and India.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
+                            <div class="objective-card">
+                                <div class="objective-icon">
+                                    <i class="fas fa-chalkboard-teacher"></i>
+                                </div>
+                                <h4 class="objective-title">Empower Teachers</h4>
+                                <p class="objective-description">Provide training and resources to help teachers effectively integrate technology into their teaching practices.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="600">
+                            <div class="objective-card">
+                                <div class="objective-icon">
+                                    <i class="fas fa-hand-holding-heart"></i>
+                                </div>
+                                <h4 class="objective-title">Community Involvement</h4>
+                                <p class="objective-description">Engage parents and community members in the educational process to create a supportive learning environment.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Why Nabha Section -->
+        <div class="row mt-5">
+            <div class="col-sm-11 mx-auto">
+                <div class="why-nabha-section p-4" data-aos="fade-up">
+                    <h1 class="text-center text-light py-3">Why We Chose Digital Learning for Rural Schools in Nabha</h1>
+                    <hr class="bg-light">
+                    <div class="row">
+                        <div class="col-sm-6" data-aos="fade-right">
+                            <dl class="py-3 px-3 text-light">
+                                <dt>1. Educational Gap</dt>
+                                <dd>
+                                    Nabha is a semi-rural area where digital resources and smart education tools are still lacking.
+                                    Rural students do not have proper resources for quality education.
+                                </dd>
+                                <dt>2. Digital Divide</dt>
+                                <dd>
+                                    There is a clear difference in education quality between urban and rural areas.
+                                    Limited digital infrastructure in Nabha makes this project impactful.
+                                </dd>
+                                <dt>3. Accessibility</dt>
+                                <dd>
+                                    Nabha schools mostly use traditional teaching methods.
+                                    Our project provides modern, interactive, and easily accessible education.
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="col-sm-6" data-aos="fade-left">
+                            <dl class="py-3 px-3 text-light">
+                                <dt>4. Pilot Area Selection</dt>
+                                <dd>
+                                    Nabha is a manageable and focused area where the project can be started
+                                    and later expanded to other rural regions.
+                                </dd>
+                                <dt>5. Government & Community Need</dt>
+                                <dd>
+                                    Considering local school needs, introducing digital learning in Nabha
+                                    will be practical and effective for community development.
+                                </dd>
+                                <dt>6. Scalable Model</dt>
+                                <dd>
+                                    Success in Nabha can create a replicable model for other rural areas
+                                    in Punjab and beyond.
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="row bg-primary mt-5" id="contact">
+            <div class="col-sm-12">
+                <div class="row py-4 px-5">
+                    <div class="col-sm-4 text-light footer-links">
+                        <h5>Useful Links</h5>
+                        <hr class="bg-light">
+                        <i class="fa-solid fa-arrow-up-right-from-square fa-sm me-2"></i>
+                        <a target="_blank" href="https://www.unesco.org/" class="text-light text-decoration-none">UNESCO Digital Learning Reports</a><br>
+                        <i class="fa-solid fa-arrow-up-right-from-square fa-sm me-2 mt-2"></i>
+                        <a href="https://ncert.nic.in/" target="_blank" class="text-light text-decoration-none">NCERT Curriculum Guidelines</a><br>
+                        <i class="fa-solid fa-arrow-up-right-from-square fa-sm me-2 mt-2"></i>
+                        <a href="https://www.education.gov.in/nep" target="_blank" class="text-light text-decoration-none">NEP 2022 Education Policy</a><br>
+                    </div>
+                    <div class="col-sm-4 text-light footer-links">
+                        <h5>Quick Links</h5>
+                        <hr class="bg-light">
+                        <i class="fa-solid fa-arrow-up-right-from-square fa-sm me-2"></i>
+                        <a href="#" class="text-light text-decoration-none">Home</a><br>
+                        <i class="fa-solid fa-arrow-up-right-from-square fa-sm me-2 mt-2"></i>
+                        <a href="#about" class="text-light text-decoration-none">About Us</a><br>
+                        <i class="fa-solid fa-arrow-up-right-from-square fa-sm me-2 mt-2"></i>
+                        <a href="#" class="text-light text-decoration-none">Courses</a><br>
+                        <i class="fa-solid fa-arrow-up-right-from-square fa-sm me-2 mt-2"></i>
+                        <a href="#" class="text-light text-decoration-none">Developer Page</a>
+                    </div>
+                    <div class="col-sm-4 text-light">
+                        <h5>Contact Us</h5>
+                        <hr class="bg-light">
+                        <i class="fa-solid fa-phone-volume fa-bounce fa-xl me-2"></i>
+                        <b>Call Us: <a href="tel:+910000000000" class="text-light text-decoration-none">+91 0000 000 0000</a></b><br>
+                        <i class="fa-solid fa-envelope fa-shake fa-xl me-2 mt-2"></i>
+                        <b>Mail Us: <a href="mailto:shikshasetu@gmail.com" class="text-light text-decoration-none">shikshasetu@gmail.com</a></b><br>
+                        <i class="fa-solid fa-location-dot fa-xl me-2 mt-2"></i>
+                        <b>Address: Nabha, Punjab, India</b>
+                        <div class="mt-3">
+                            <a href="#" class="text-light me-3"><i class="fab fa-facebook fa-2x"></i></a>
+                            <a href="#" class="text-light me-3"><i class="fab fa-twitter fa-2x"></i></a>
+                            <a href="#" class="text-light me-3"><i class="fab fa-instagram fa-2x"></i></a>
+                            <a href="#" class="text-light"><i class="fab fa-youtube fa-2x"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h6 class="text-light text-center py-3"><b>© Copyright 2024 | Designed & Developed By Team Shiksha Setu</b></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS (Animate On Scroll)
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Back to top button functionality
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Counter animation
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
+        
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-count');
+                const count = +counter.innerText;
+                const increment = target / speed;
+                
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(animateCounters, 1);
+                } else {
+                    counter.innerText = target;
+                }
+            });
+        };
+        
+        // Start counter animation when element is in viewport
+        const counterSection = document.querySelector('.counter-section');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        observer.observe(counterSection);
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Load more updates functionality
+        const loadMoreBtn = document.getElementById('loadMoreUpdates');
+        loadMoreBtn.addEventListener('click', function() {
+            // In a real implementation, this would fetch more data from a server
+            alert('More updates would be loaded here in a real implementation!');
+            // For demonstration, we'll just disable the button
+            this.textContent = 'No More Updates';
+            this.disabled = true;
+            this.classList.remove('btn-primary');
+            this.classList.add('btn-secondary');
+        });
+
+        // Add loading animation to cards on scroll
+        const cards = document.querySelectorAll('.card, .update-card, .objective-card');
+        
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        cards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            cardObserver.observe(card);
+        });
+    </script>
+</body>
+
+</html>
